@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="AppBaseTheme"> <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:actionBarStyle">@style/WWActionBarStyle</item>
+        <item name="android:listViewStyle">@style/WWListView</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    
+    
+    <style name="WWActionBarStyle" parent="@android:style/Widget.ActionBar">
+        <item name="android:displayOptions">@null</item>
+        <item name="android:background">@drawable/bg_titlebar</item>
+        <item name="backgroundStacked">@drawable/bg_titlebar</item>
+        <item name="backgroundStacked">@drawable/transparent_background</item>
+        <item name="backgroundSplit">@drawable/transparent_background</item>
+
+        <!-- 支持库兼容模式 -->
+
+        <item name="background">@drawable/bg_titlebar</item>
+        <item name="backgroundStacked">@drawable/transparent_background</item>
+        <item name="backgroundSplit">@drawable/transparent_background</item>
+    </style>
+    
+    <style name="WWListView">
+        <item name="android:scrollbars">none</item>
+        <item name="android:listSelector">@drawable/selector_expandable_child_item</item>
+        <item name="android:divider">@android:drawable/divider_horizontal_bright</item>
+        <item name="android:dividerHeight">1px</item>
+    </style>
+    
+</resources>

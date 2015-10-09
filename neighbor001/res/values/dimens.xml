@@ -1,0 +1,12 @@
+<resources>
+
+   	<!-- textSize  字体大小 -->
+	<dimen name="TextSize12">12dp</dimen>
+	<dimen name="TextSize14">14dp</dimen>
+	<!-- textSize  字体大小 -->
+	
+	<!-- 边距和宽高 -->
+	<dimen name="titleAndBottomHeight">48dp</dimen>
+	<dimen name="homeAutoViewPagerHeight">183dp</dimen>
+	<!-- 边距和宽高 -->
+</resources>
