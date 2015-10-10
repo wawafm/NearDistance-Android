@@ -4,8 +4,20 @@ package com.neighbor.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.security.auth.PrivateCredentialPermission;
+
 import com.example.neighbor001.R;
 import com.handmark.pulltorefresh.library.internal.Utils;
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.HttpHandler;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest;
+import com.neighbor.adapter.HomeGridViewAdapter;
+import com.neighbor.adapter.HomeTuanGouListAdapter;
+import com.neighbor.app.AppConfig;
+import com.neighbor.utils.LogUtis;
 import com.neighbor.utils.Util;
 import com.neighbor.widget.PullRefreshScrollerView;
 
@@ -38,6 +50,9 @@ public class HomeFragment extends Fragment{
 	private ListView homeList;
 	private HomeViewPagerAdapter homeAdapter = null;
 	private List<ImageView> imageViews= null;
+	
+	private HttpHandler httpHandler = null;
+	private HttpUtils httpUtils=null;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -50,17 +65,57 @@ public class HomeFragment extends Fragment{
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onViewCreated(view, savedInstanceState);
+		
+		httpUtils = new HttpUtils();
 		homeGrid = (GridView) view.findViewById(R.id.homeContentType);
 		homeList = (ListView) view.findViewById(R.id.homeTuanGouList);
 		homeRgs = (RadioGroup) view.findViewById(R.id.homePageRadio);
-		
 		homePager = (ViewPager) view.findViewById(R.id.homeAutoViewPager);
 		
 		initHomeRgs();
 		initViewPager();
+		initGridView();
+		initHomeList();
 	}
 
 	
+
+	private void initHomeList() {
+		getMeiTuanData();
+		List<String> tuanGouMsgList = new ArrayList<String>();
+		for (int i = 0; i < 1; i++) {
+			tuanGouMsgList.add("tuanGouMsgList"+i);
+		}
+		HomeTuanGouListAdapter tuanGouListAdapter = new HomeTuanGouListAdapter(getActivity(),tuanGouMsgList);
+		homeList.setAdapter(tuanGouListAdapter);
+	}
+
+	private void getMeiTuanData() {
+		// TODO Auto-generated method stub
+		httpHandler = httpUtils.send(HttpRequest.HttpMethod.GET,AppConfig.MEITUAN_URL,new RequestCallBack<String>() {
+			@Override
+			public void onSuccess(ResponseInfo<String> responseInfo) {
+
+				LogUtis.log(">>>>>>>>>>>>>>>>>>>"+responseInfo.result);
+			}
+			
+			@Override
+			public void onFailure(HttpException e, String s) {
+				// TODO Auto-generated method stub
+				
+			}
+
+		});
+	}
+
+	private void initGridView() {
+		// TODO Auto-generated method stub
+		String str[] = {"费用查询","小区消息","保修求助","房屋租赁","今日优惠","投诉信箱"}; 
+		int logo[] = {R.drawable.feiyongchaxun,R.drawable.xiaoquxiaoxi,R.drawable.baoxiuqiuzhu,
+					R.drawable.fangwuzulin,R.drawable.jinriyouhui,R.drawable.tousuxinxiang}; 
+		HomeGridViewAdapter gridViewAdapter = new HomeGridViewAdapter(getActivity(),logo,str);
+		homeGrid.setAdapter(gridViewAdapter);
+	}
 
 	private void initHomeRgs() {
 		// TODO Auto-generated method stub
@@ -80,6 +135,7 @@ public class HomeFragment extends Fragment{
 		}
 		homePager.setOnPageChangeListener(new ViewPageChangeListener());
 		homePager.setCurrentItem(0);
+		homePager.setOffscreenPageLimit(4);
 		homeAdapter = new HomeViewPagerAdapter(imageViews);
 		homePager.setAdapter(homeAdapter);
 	}
@@ -111,7 +167,7 @@ public class HomeFragment extends Fragment{
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
 //          super.destroyItem(container, position, object);
-            container.removeView(imageViews.get(position));
+//            container.removeView(imageViews.get(position));
         }
 		
 	}

@@ -1,24 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/titleAndBottomHeight"
     android:orientation="horizontal"
-    android:gravity="center|left">
+    android:gravity="center"
+    >
     
     <ImageView
+        android:layout_alignParentLeft="true"
         android:id="@+id/titleImage"
         android:layout_marginLeft="18dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/shouyelogo"
         />
-    <TextView 
+    <TextView
+        android:gravity="center" 
+        android:layout_toRightOf="@id/titleImage"
+        android:layout_gravity="left"
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:textColor="@color/radioGroupTextColor"
         android:textSize="@dimen/TextSize12"
         />
-
-</LinearLayout>
+	<TextView 
+	    android:id="@+id/textRight"
+	    android:layout_alignParentRight="true"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:drawableLeft="@drawable/xinhuati"
+	    android:textColor="@color/radioGroupTextColor"
+        android:textSize="@dimen/TextSize12"
+        android:text="发布新话题"
+        android:visibility="gone"
+	    />
+</RelativeLayout>

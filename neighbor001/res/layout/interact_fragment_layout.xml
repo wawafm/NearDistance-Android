@@ -3,11 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-    <TextView 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="这是互动页面"
+  	
+    <com.neighbor.widget.RefreshListView
+        android:id="@+id/huDongList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="true"
+        android:scrollbars="none"
+        android:dividerHeight="0dp"
         />
 
 </LinearLayout>

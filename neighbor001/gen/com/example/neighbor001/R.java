@@ -15,10 +15,11 @@ public final class R {
         public static final int abc_slide_in_top=0x7f040003;
         public static final int abc_slide_out_bottom=0x7f040004;
         public static final int abc_slide_out_top=0x7f040005;
-        public static final int slide_in_from_bottom=0x7f040006;
-        public static final int slide_in_from_top=0x7f040007;
-        public static final int slide_out_to_bottom=0x7f040008;
-        public static final int slide_out_to_top=0x7f040009;
+        public static final int alpha_action=0x7f040006;
+        public static final int slide_in_from_bottom=0x7f040007;
+        public static final int slide_in_from_top=0x7f040008;
+        public static final int slide_out_to_bottom=0x7f040009;
+        public static final int slide_out_to_top=0x7f04000a;
     }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
@@ -996,22 +997,25 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f080002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f090008;
+        public static final int abc_search_url_text_holo=0x7f09000a;
         public static final int abc_search_url_text_normal=0x7f090000;
         public static final int abc_search_url_text_pressed=0x7f090002;
         public static final int abc_search_url_text_selected=0x7f090001;
-        public static final int color_gray=0x7f090006;
-        public static final int color_white=0x7f090007;
+        public static final int color_gray=0x7f090007;
+        public static final int color_white=0x7f090008;
+        public static final int homeTuanGouMsg9=0x7f090005;
         public static final int radioGroupTextColor=0x7f090003;
         public static final int radioGroupTextColorDefalut=0x7f090004;
-        public static final int radio_group_text_cheched=0x7f090009;
-        public static final int title_bar_bg_color=0x7f090005;
+        public static final int radio_group_text_cheched=0x7f09000b;
+        public static final int title_bar_bg_color=0x7f090006;
+        public static final int white=0x7f090009;
     }
     public static final class dimen {
         /**  textSize  字体大小 
          */
-        public static final int TextSize12=0x7f06001a;
-        public static final int TextSize14=0x7f06001b;
+        public static final int TextSize10=0x7f06001a;
+        public static final int TextSize12=0x7f06001b;
+        public static final int TextSize14=0x7f06001c;
         /**  Default height of an action bar. 
  Default height of an action bar. 
  Default height of an action bar. 
@@ -1100,7 +1104,7 @@ containing a value of this type.
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f06001e;
+        public static final int activity_horizontal_margin=0x7f060022;
         /**  The platform's desired fixed height for a dialog along the major axis
          (the screen is in portrait). This may be either a fraction or a dimension.
  The platform's desired fixed height for a dialog along the major axis
@@ -1135,14 +1139,17 @@ containing a value of this type.
         public static final int dialog_fixed_width_minor=0x7f060017;
         public static final int header_footer_left_right_padding=0x7f060003;
         public static final int header_footer_top_bottom_padding=0x7f060004;
-        public static final int homeAutoViewPagerHeight=0x7f06001d;
+        public static final int homeAutoViewPagerHeight=0x7f06001e;
         public static final int indicator_corner_radius=0x7f060001;
         public static final int indicator_internal_padding=0x7f060002;
         public static final int indicator_right_padding=0x7f060000;
+        public static final int interactCommontUserAvatar=0x7f060020;
+        public static final int interactListPadding=0x7f06001f;
+        public static final int interactReplyUserAvatar=0x7f060021;
         /**  textSize  字体大小 
  边距和宽高 
          */
-        public static final int titleAndBottomHeight=0x7f06001c;
+        public static final int titleAndBottomHeight=0x7f06001d;
     }
     public static final class drawable {
         public static final int abc_ab_bottom_solid_dark_holo=0x7f020000;
@@ -1234,36 +1241,44 @@ containing a value of this type.
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
         public static final int adjiaodian=0x7f020057;
         public static final int adnojiaodian=0x7f020058;
-        public static final int bg_titlebar=0x7f020059;
-        public static final int default_l=0x7f02005a;
-        public static final int home_pager_radio_checked=0x7f02005b;
-        public static final int homejiaodian=0x7f02005c;
-        public static final int homenojiaodian=0x7f02005d;
-        public static final int hudongjiaodian=0x7f02005e;
-        public static final int hudongnojiaodian=0x7f02005f;
-        public static final int ic_launcher=0x7f020060;
-        public static final int img1=0x7f020061;
-        public static final int img2=0x7f020062;
-        public static final int img3=0x7f020063;
-        public static final int img4=0x7f020064;
-        public static final int indicator_arrow=0x7f020065;
-        public static final int indicator_bg_bottom=0x7f020066;
-        public static final int indicator_bg_top=0x7f020067;
-        public static final int myjiaodian=0x7f020068;
-        public static final int mynojiaodian=0x7f020069;
-        public static final int radio_btn_business_circle=0x7f02006a;
-        public static final int radio_btn_home=0x7f02006b;
-        public static final int radio_btn_interact=0x7f02006c;
-        public static final int radio_btn_my=0x7f02006d;
-        public static final int renovate_shang=0x7f02006e;
-        public static final int renovate_xia=0x7f02006f;
-        public static final int renovate_yuan=0x7f020070;
-        public static final int renovate_yuan1=0x7f020071;
-        public static final int selector_expandable_child_item=0x7f020072;
-        public static final int shangquanjiaodian=0x7f020073;
-        public static final int shangquannojiaodian=0x7f020074;
-        public static final int shouyelogo=0x7f020075;
-        public static final int transparent_background=0x7f020076;
+        public static final int baoxiuqiuzhu=0x7f020059;
+        public static final int bg_titlebar=0x7f02005a;
+        public static final int default_l=0x7f02005b;
+        public static final int fangwuzulin=0x7f02005c;
+        public static final int feiyongchaxun=0x7f02005d;
+        public static final int home_pager_radio_checked=0x7f02005e;
+        public static final int homejiaodian=0x7f02005f;
+        public static final int homenojiaodian=0x7f020060;
+        public static final int hudongjiaodian=0x7f020061;
+        public static final int hudongnojiaodian=0x7f020062;
+        public static final int huifu=0x7f020063;
+        public static final int ic_launcher=0x7f020064;
+        public static final int img1=0x7f020065;
+        public static final int img2=0x7f020066;
+        public static final int img3=0x7f020067;
+        public static final int img4=0x7f020068;
+        public static final int indicator_arrow=0x7f020069;
+        public static final int indicator_bg_bottom=0x7f02006a;
+        public static final int indicator_bg_top=0x7f02006b;
+        public static final int jinriyouhui=0x7f02006c;
+        public static final int myjiaodian=0x7f02006d;
+        public static final int mynojiaodian=0x7f02006e;
+        public static final int radio_btn_business_circle=0x7f02006f;
+        public static final int radio_btn_home=0x7f020070;
+        public static final int radio_btn_interact=0x7f020071;
+        public static final int radio_btn_my=0x7f020072;
+        public static final int renovate_shang=0x7f020073;
+        public static final int renovate_xia=0x7f020074;
+        public static final int renovate_yuan=0x7f020075;
+        public static final int renovate_yuan1=0x7f020076;
+        public static final int selector_expandable_child_item=0x7f020077;
+        public static final int shangquanjiaodian=0x7f020078;
+        public static final int shangquannojiaodian=0x7f020079;
+        public static final int shouyelogo=0x7f02007a;
+        public static final int tousuxinxiang=0x7f02007b;
+        public static final int transparent_background=0x7f02007e;
+        public static final int xiaoquxiaoxi=0x7f02007c;
+        public static final int xinhuati=0x7f02007d;
     }
     public static final class id {
         public static final int action_bar=0x7f050028;
@@ -1277,13 +1292,18 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050022;
         public static final int action_menu_presenter=0x7f050023;
         public static final int action_mode_close_button=0x7f050030;
-        public static final int action_settings=0x7f050058;
+        public static final int action_settings=0x7f05006b;
         public static final int activity_chooser_view_content=0x7f050031;
         public static final int always=0x7f050017;
         public static final int beginning=0x7f05001d;
         public static final int both=0x7f050003;
+        public static final int businessWebView=0x7f05004b;
         public static final int checkbox=0x7f050039;
         public static final int collapseActionView=0x7f050019;
+        public static final int commentText=0x7f05005f;
+        public static final int commontAvatarImg=0x7f05005d;
+        public static final int commontLayout=0x7f050061;
+        public static final int commontTime=0x7f050062;
         public static final int default_activity_button=0x7f050034;
         public static final int dialog=0x7f05001a;
         public static final int disableHome=0x7f050014;
@@ -1293,40 +1313,49 @@ containing a value of this type.
         public static final int end=0x7f05001f;
         public static final int expand_activities_button=0x7f050032;
         public static final int expanded_menu=0x7f050038;
-        public static final int fl_inner=0x7f050053;
+        public static final int fl_inner=0x7f050066;
         public static final int flip=0x7f050008;
         public static final int gridview=0x7f050009;
         public static final int home=0x7f050020;
         public static final int homeAsUp=0x7f050011;
-        public static final int homeAutoViewPager=0x7f05004d;
-        public static final int homeContentType=0x7f05004f;
-        public static final int homeLine=0x7f050050;
-        public static final int homePageRadio=0x7f05004e;
-        public static final int homeTuanGouList=0x7f050052;
-        public static final int homeTuanGouTitle=0x7f050051;
+        public static final int homeAutoViewPager=0x7f05004f;
+        public static final int homeContentType=0x7f050051;
+        public static final int homeLine=0x7f050052;
+        public static final int homePageRadio=0x7f050050;
+        public static final int homeQiangGou=0x7f05005b;
+        public static final int homeTuanGouList=0x7f050054;
+        public static final int homeTuanGouTitle=0x7f050053;
+        public static final int huDongList=0x7f05005c;
         public static final int icon=0x7f050036;
         public static final int ifRoom=0x7f050016;
         public static final int image=0x7f050033;
         public static final int line=0x7f05004a;
         public static final int listMode=0x7f05000d;
         public static final int list_item=0x7f050035;
+        public static final int logoImg=0x7f050055;
+        public static final int logoText=0x7f050056;
         public static final int mainBottomRgs=0x7f050049;
         public static final int manualOnly=0x7f050004;
         public static final int middle=0x7f05001e;
+        public static final int nameText=0x7f05005e;
         public static final int never=0x7f050015;
         public static final int none=0x7f05001c;
         public static final int normal=0x7f05000c;
         public static final int progress_circular=0x7f050024;
         public static final int progress_horizontal=0x7f050025;
+        public static final int publishImg=0x7f050060;
         public static final int pullDownFromTop=0x7f050005;
         public static final int pullFromEnd=0x7f050002;
         public static final int pullFromStart=0x7f050001;
         public static final int pullUpFromBottom=0x7f050006;
-        public static final int pull_to_refresh_image=0x7f050054;
-        public static final int pull_to_refresh_progress=0x7f050055;
-        public static final int pull_to_refresh_sub_text=0x7f050057;
-        public static final int pull_to_refresh_text=0x7f050056;
+        public static final int pull_to_refresh_image=0x7f050067;
+        public static final int pull_to_refresh_progress=0x7f050068;
+        public static final int pull_to_refresh_sub_text=0x7f05006a;
+        public static final int pull_to_refresh_text=0x7f050069;
         public static final int radio=0x7f05003b;
+        public static final int replyAvatarImg=0x7f050064;
+        public static final int replyContentText=0x7f050065;
+        public static final int replyMsg=0x7f050063;
         public static final int rotate=0x7f050007;
         public static final int scrollview=0x7f05000b;
         public static final int search_badge=0x7f05003e;
@@ -1346,10 +1375,15 @@ containing a value of this type.
         public static final int split_action_bar=0x7f05002a;
         public static final int submit_area=0x7f050045;
         public static final int tabMode=0x7f05000e;
+        public static final int textDetail=0x7f05005a;
+        public static final int textRight=0x7f05004e;
         public static final int title=0x7f050037;
-        public static final int titleImage=0x7f05004b;
-        public static final int titleText=0x7f05004c;
+        public static final int titleImage=0x7f05004c;
+        public static final int titleText=0x7f05004d;
         public static final int top_action_bar=0x7f05002c;
+        public static final int tuanGouMsgDetail=0x7f050059;
+        public static final int tuanGouMsgTitle=0x7f050058;
+        public static final int tuangouImg=0x7f050057;
         public static final int up=0x7f05002d;
         public static final int useLogo=0x7f05000f;
         public static final int viewpager=0x7f050048;
@@ -1410,14 +1444,17 @@ containing a value of this type.
         public static final int business_circle_fragment_layout=0x7f030019;
         public static final int global_title_layout=0x7f03001a;
         public static final int home_fragment_layout=0x7f03001b;
-        public static final int home_pager_radiogroup_layout=0x7f03001c;
-        public static final int interact_fragment_layout=0x7f03001d;
-        public static final int line_layout=0x7f03001e;
-        public static final int my_fragment_layout=0x7f03001f;
-        public static final int pull_to_refresh_header_horizontal=0x7f030020;
-        public static final int pull_to_refresh_header_vertical=0x7f030021;
-        public static final int support_simple_spinner_dropdown_item=0x7f030022;
-        public static final int widget_bottom_layout=0x7f030023;
+        public static final int home_gridview_adapter_layout=0x7f03001c;
+        public static final int home_pager_radiogroup_layout=0x7f03001d;
+        public static final int home_tuangou_list_layout=0x7f03001e;
+        public static final int interact_fragment_layout=0x7f03001f;
+        public static final int interact_listview_content_layout=0x7f030020;
+        public static final int line_layout=0x7f030021;
+        public static final int my_fragment_layout=0x7f030022;
+        public static final int pull_to_refresh_header_horizontal=0x7f030023;
+        public static final int pull_to_refresh_header_vertical=0x7f030024;
+        public static final int support_simple_spinner_dropdown_item=0x7f030025;
+        public static final int widget_bottom_layout=0x7f030026;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;

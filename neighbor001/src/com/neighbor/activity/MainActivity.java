@@ -20,6 +20,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
+import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -57,7 +58,7 @@ public class MainActivity extends BaseActivity {
 		fragmentPageAdapter = new MainFragmentPageAdapter(getSupportFragmentManager());
 		mPager.setAdapter(fragmentPageAdapter);
 		mPager.setOnPageChangeListener(new onPageSetChanger());
-		mPager.setOffscreenPageLimit(3);
+		mPager.setOffscreenPageLimit(4);
 		mPager.setCurrentItem(0);
 	}
 
@@ -104,6 +105,11 @@ public class MainActivity extends BaseActivity {
 		public void onPageSelected(int arg0) {
 			// TODO Auto-generated method stub
 			rgs.check(arg0+1);
+			if (arg0==1) {
+				setTextRight("发布新话题",1);
+			}else {
+				setTextRight("发布新话题",0);
+			}
 		}
 		
 	}
@@ -127,7 +133,11 @@ public class MainActivity extends BaseActivity {
 			// TODO Auto-generated method stub
 			return fragments.size();
 		}
-		
+		@Override
+		public void destroyItem(ViewGroup container, int position, Object object) {
+			// TODO Auto-generated method stub
+//			super.destroyItem(container, position, object);
+		}
 	} 
 	
 	@Override

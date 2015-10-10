@@ -8,13 +8,14 @@
         android:layout_height="match_parent"
         android:gravity="center"
         >
+
 	    <android.support.v4.view.ViewPager
 	        android:id="@+id/homeAutoViewPager"
-	        android:layout_width="match_parent"
+	        android:layout_width="wrap_content"
 	        android:layout_height="@dimen/homeAutoViewPagerHeight"
 	        android:flipInterval="30"
-        	android:persistentDrawingCache="animation"
-	    	/>
+	        android:persistentDrawingCache="animation" />
+
 	    <include 
 	        android:id="@+id/homePageRadio"
 	        android:layout_marginTop="143dp"
@@ -23,9 +24,11 @@
 	        layout="@layout/home_pager_radiogroup_layout"
 	        />
 	    <GridView
+	        android:paddingTop="30dp"
+	        android:layout_centerHorizontal="true"
 	        android:layout_below="@+id/homeAutoViewPager" 
 	        android:id="@+id/homeContentType"
-	        android:layout_width="match_parent"
+	        android:layout_width="wrap_content"
 	        android:layout_height="210dp"
 	        android:numColumns="3"
 	        />
