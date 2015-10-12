@@ -1,11 +1,20 @@
 package com.neighbor.adapter;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import com.example.neighbor001.R;
+import com.neighbor.bean.DealBean;
+import com.neighbor.bean.ShopBean;
+import com.neighbor.utils.LogUtis;
+import com.neighbor.utils.Util;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import android.content.Context;
 import android.graphics.Paint;
+import android.media.tv.TvContentRating;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,29 +26,29 @@ import android.widget.TextView;
 public class HomeTuanGouListAdapter extends BaseAdapter{
 
 	private Context mContext;
-	private List<String> tuanGouStr = null;
-	public HomeTuanGouListAdapter(Context mContext,List<String> tuanGouStr){
+//	private List<Map<String,Object>> tuanGouStr = null;
+	List<DealBean> dealBeansList = null;
+	List<ShopBean> shopBeanList = null;
+	public HomeTuanGouListAdapter(Context mContext,List<ShopBean> shopBeansList,List<DealBean> dealBeansList){
 		this.mContext = mContext;
-		this.tuanGouStr = tuanGouStr;
+		this.shopBeanList = shopBeansList;
+		this.dealBeansList = dealBeansList;
 	}
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return tuanGouStr.size();
+		return 1;
 	}
-
 	@Override
 	public Object getItem(int item) {
 		// TODO Auto-generated method stub
-		return tuanGouStr.get(item);
+		return shopBeanList.get(item);
 	}
-
 	@Override
 	public long getItemId(int id) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
@@ -51,11 +60,25 @@ public class HomeTuanGouListAdapter extends BaseAdapter{
 		}else {
 			vh = (ViewHolder) convertView.getTag();
 		}
-		vh.tuanGouListTitle.setText(tuanGouStr.get(position));
-		vh.tuanGouMoreDetail.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+//		vh.tuanGouListTitle.setText(shopMsgs.get(position).getShop_name());  //店名
+		vh.tuanGouMoreDetail.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);    // 下划线
+		
+		
+		ShopBean sBean = shopBeanList.get(position);
+		
+		DealBean dBean = dealBeansList.get(position);
+		if (sBean!=null) {
+			vh.tuanGouListTitle.setText(sBean.getShop_name());
+		}
+		if (dBean!=null) {
+			vh.tuanGouDetail.setText(dBean.getDeal_desc());
+			Util.displayImage(vh.tuanGouImg,dBean.getDeal_img());
+		}
+		
 		return convertView;
 	}
 	
+	//初始化ViewHolder
 	public class ViewHolder{
 		private ImageView tuanGouImg;
 		private TextView tuanGouListTitle;

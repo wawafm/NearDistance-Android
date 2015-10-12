@@ -1281,6 +1281,7 @@ containing a value of this type.
         public static final int xinhuati=0x7f02007d;
     }
     public static final class id {
+        public static final int YouHuiList=0x7f050066;
         public static final int action_bar=0x7f050028;
         public static final int action_bar_activity_content=0x7f050021;
         public static final int action_bar_container=0x7f050027;
@@ -1292,7 +1293,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050022;
         public static final int action_menu_presenter=0x7f050023;
         public static final int action_mode_close_button=0x7f050030;
-        public static final int action_settings=0x7f05006b;
+        public static final int action_settings=0x7f05006c;
         public static final int activity_chooser_view_content=0x7f050031;
         public static final int always=0x7f050017;
         public static final int beginning=0x7f05001d;
@@ -1313,7 +1314,7 @@ containing a value of this type.
         public static final int end=0x7f05001f;
         public static final int expand_activities_button=0x7f050032;
         public static final int expanded_menu=0x7f050038;
-        public static final int fl_inner=0x7f050066;
+        public static final int fl_inner=0x7f050067;
         public static final int flip=0x7f050008;
         public static final int gridview=0x7f050009;
         public static final int home=0x7f050020;
@@ -1348,10 +1349,10 @@ containing a value of this type.
         public static final int pullFromEnd=0x7f050002;
         public static final int pullFromStart=0x7f050001;
         public static final int pullUpFromBottom=0x7f050006;
-        public static final int pull_to_refresh_image=0x7f050067;
-        public static final int pull_to_refresh_progress=0x7f050068;
-        public static final int pull_to_refresh_sub_text=0x7f05006a;
-        public static final int pull_to_refresh_text=0x7f050069;
+        public static final int pull_to_refresh_image=0x7f050068;
+        public static final int pull_to_refresh_progress=0x7f050069;
+        public static final int pull_to_refresh_sub_text=0x7f05006b;
+        public static final int pull_to_refresh_text=0x7f05006a;
         public static final int radio=0x7f05003b;
         public static final int replyAvatarImg=0x7f050064;
         public static final int replyContentText=0x7f050065;
@@ -1449,12 +1450,13 @@ containing a value of this type.
         public static final int home_tuangou_list_layout=0x7f03001e;
         public static final int interact_fragment_layout=0x7f03001f;
         public static final int interact_listview_content_layout=0x7f030020;
-        public static final int line_layout=0x7f030021;
-        public static final int my_fragment_layout=0x7f030022;
-        public static final int pull_to_refresh_header_horizontal=0x7f030023;
-        public static final int pull_to_refresh_header_vertical=0x7f030024;
-        public static final int support_simple_spinner_dropdown_item=0x7f030025;
-        public static final int widget_bottom_layout=0x7f030026;
+        public static final int jinri_youhui_layout=0x7f030021;
+        public static final int line_layout=0x7f030022;
+        public static final int my_fragment_layout=0x7f030023;
+        public static final int pull_to_refresh_header_horizontal=0x7f030024;
+        public static final int pull_to_refresh_header_vertical=0x7f030025;
+        public static final int support_simple_spinner_dropdown_item=0x7f030026;
+        public static final int widget_bottom_layout=0x7f030027;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;

@@ -10,6 +10,8 @@ import com.neighbor.fragment.InteractFragment;
 import com.neighbor.fragment.MyFragment;
 import com.neighbor.utils.LogUtis;
 import com.neighbor.widget.ListViewForScrollView;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -36,6 +38,7 @@ public class MainActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
 		initView();
 		initRadioGroup();
 		initViewPager();

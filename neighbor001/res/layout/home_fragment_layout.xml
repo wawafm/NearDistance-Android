@@ -68,6 +68,8 @@
 	        android:id="@+id/homeTuanGouList"
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"
+	        android:paddingBottom="55dp"
+	        android:layout_marginLeft="15dp"
 	        />
 	</RelativeLayout>
 </com.neighbor.widget.PullRefreshScrollerView>

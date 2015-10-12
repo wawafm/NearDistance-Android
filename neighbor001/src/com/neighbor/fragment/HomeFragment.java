@@ -1,39 +1,44 @@
 
 package com.neighbor.fragment;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import javax.security.auth.PrivateCredentialPermission;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
 
+import com.example.neighbor001.AppConfig;
 import com.example.neighbor001.R;
-import com.handmark.pulltorefresh.library.internal.Utils;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.HttpHandler;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.neighbor.activity.JinRiYouHuiActivity;
 import com.neighbor.adapter.HomeGridViewAdapter;
 import com.neighbor.adapter.HomeTuanGouListAdapter;
-import com.neighbor.app.AppConfig;
+import com.neighbor.bean.DealBean;
+import com.neighbor.bean.ShopBean;
 import com.neighbor.utils.LogUtis;
-import com.neighbor.utils.Util;
-import com.neighbor.widget.PullRefreshScrollerView;
 
-import android.R.integer;
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -50,6 +55,12 @@ public class HomeFragment extends Fragment{
 	private ListView homeList;
 	private HomeViewPagerAdapter homeAdapter = null;
 	private List<ImageView> imageViews= null;
+	//存放XML解析的数据
+//	private List<Map<String, Object>> beanList = null;
+	private List<DealBean> dealBeansList = null;
+	private List<ShopBean> shopBeansList = null;
+	private DealBean dealBeanObj = null;
+	private ShopBean shopBeanObj = null;
 	
 	private HttpHandler httpHandler = null;
 	private HttpUtils httpUtils=null;
@@ -82,21 +93,25 @@ public class HomeFragment extends Fragment{
 
 	private void initHomeList() {
 		getMeiTuanData();
-		List<String> tuanGouMsgList = new ArrayList<String>();
-		for (int i = 0; i < 1; i++) {
-			tuanGouMsgList.add("tuanGouMsgList"+i);
-		}
-		HomeTuanGouListAdapter tuanGouListAdapter = new HomeTuanGouListAdapter(getActivity(),tuanGouMsgList);
-		homeList.setAdapter(tuanGouListAdapter);
+		
 	}
 
+	//获取美团接口里面的数据
 	private void getMeiTuanData() {
 		// TODO Auto-generated method stub
 		httpHandler = httpUtils.send(HttpRequest.HttpMethod.GET,AppConfig.MEITUAN_URL,new RequestCallBack<String>() {
 			@Override
-			public void onSuccess(ResponseInfo<String> responseInfo) {
-
-				LogUtis.log(">>>>>>>>>>>>>>>>>>>"+responseInfo.result);
+			public void onSuccess(ResponseInfo<String> responseInfo){
+				// TODO Auto-generated method stub
+				InputStream is = null;
+				try {
+					is = new ByteArrayInputStream(responseInfo.result.getBytes("UTF-8"));
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				initXMLData(is);
 			}
 			
 			@Override
@@ -107,6 +122,67 @@ public class HomeFragment extends Fragment{
 
 		});
 	}
+	
+	private void initXMLData(InputStream result) {
+		InputStreamReader isr = new InputStreamReader(result);
+		XmlPullParserFactory parserFactory = null;
+		XmlPullParser parser = null;
+		try {
+			parserFactory = XmlPullParserFactory.newInstance();
+			parser = parserFactory.newPullParser();
+			parser.setInput(isr);
+			int event = parser.getEventType();
+			while (event!=XmlPullParser.END_DOCUMENT) {
+				switch (event) {
+				case XmlPullParser.START_DOCUMENT:
+//					beanList = new ArrayList<Map<String, Object>>();
+					dealBeansList = new ArrayList<DealBean>();
+					shopBeansList = new ArrayList<ShopBean>();
+					break;
+				case XmlPullParser.START_TAG:
+					String tagName = parser.getName();
+					if (tagName.equals("deal")) {
+						dealBeanObj = new DealBean();
+					}else if (tagName.equals("shop")) {
+						shopBeanObj = new ShopBean();
+					}else if (tagName.equals("deal_title")) {
+						dealBeanObj.setDeal_title(parser.nextText());
+					}else if (tagName.equals("deal_desc")) {
+						dealBeanObj.setDeal_desc(parser.nextText());
+					}else if (tagName.equals("shop_name")) {
+						shopBeanObj.setShop_name(parser.nextText());
+					}else if (tagName.equals("deal_img")) {
+						dealBeanObj.setDeal_img(parser.nextText());
+					}
+					break;
+				case XmlPullParser.END_TAG:
+					if ("deal".equals(parser.getName())) {
+						
+						dealBeansList.add(dealBeanObj);
+						dealBeanObj = null;
+					}
+					
+					if ("shop".equals(parser.getName())) {
+						shopBeansList.add(shopBeanObj);
+						shopBeanObj = null;
+					}
+					
+					break;
+
+				default:
+					break;
+				}
+				event = parser.next();
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		HomeTuanGouListAdapter tuanGouListAdapter = new HomeTuanGouListAdapter(getActivity(),shopBeansList,dealBeansList);
+		homeList.setAdapter(tuanGouListAdapter);
+	}
 
 	private void initGridView() {
 		// TODO Auto-generated method stub
@@ -115,8 +191,35 @@ public class HomeFragment extends Fragment{
 					R.drawable.fangwuzulin,R.drawable.jinriyouhui,R.drawable.tousuxinxiang}; 
 		HomeGridViewAdapter gridViewAdapter = new HomeGridViewAdapter(getActivity(),logo,str);
 		homeGrid.setAdapter(gridViewAdapter);
+		homeGrid.setOnItemClickListener(new HomeGridItemClick());
 	}
 
+	public class HomeGridItemClick implements OnItemClickListener{
+
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id) {
+			switch (position) {
+			case 0:
+				break;
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				JinRiYouHuiActivity.Lanuch(getActivity());
+				break;
+			case 5:
+				break;
+			default:
+				break;
+			}
+			
+		}
+
+	}
 	private void initHomeRgs() {
 		// TODO Auto-generated method stub
 		homeRgs.setOnCheckedChangeListener(new HomeRgsCheckedListener());
