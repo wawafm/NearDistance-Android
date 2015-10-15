@@ -8,6 +8,7 @@
     
     <com.neighbor.widget.CircularImage
         android:id="@+id/commontAvatarImg"
+        android:layout_marginTop="10dp"
         android:layout_width="@dimen/interactCommontUserAvatar"
         android:layout_height="@dimen/interactCommontUserAvatar"
         android:src="@drawable/img2"
@@ -22,6 +23,7 @@
 	    >
 	    <TextView
 	        android:id="@+id/nameText"
+	        style="@style/InteractNameTextStyle"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        />
@@ -31,16 +33,21 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="只能意会，不能言传。。。。"
+	        android:textColor="@color/radioGroupTextColorDefalut"
+	        android:textSize="@dimen/TextSize12"
 	        />
 	    <ImageView 
+	        android:layout_marginTop="10dp"
 	        android:layout_below="@id/commentText"
 	        android:id="@+id/publishImg"
 	        android:layout_width="150dp"
 	        android:layout_height="75dp"
 	        android:src="@drawable/img3"
+	        android:scaleType="centerCrop"
 	        />
 	    <LinearLayout
 	        android:id="@+id/commontLayout"
+	        android:layout_marginTop="5dp"
 	        android:layout_below="@id/publishImg"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
@@ -52,6 +59,8 @@
 		        android:layout_weight="1"
 		        android:layout_height="wrap_content"
 		        android:text="今天   15：00"
+		        android:textColor="@color/homeTuanGouMsg9"
+		        android:textSize="@dimen/TextSize10"
 		        />
 		    <TextView
 		        android:id="@+id/replyMsg"
@@ -60,31 +69,28 @@
 		        android:layout_height="wrap_content"
 		        android:drawableLeft="@drawable/huifu"
 		        android:drawablePadding="5dp"
-		        android:text="回复"
+		        android:textColor="@color/homeTuanGouMsg9"
+		        android:textSize="@dimen/TextSize10"
+		        android:text="评论"
 		        />
 	    </LinearLayout>
 	    
 	    <LinearLayout
+	        android:layout_marginTop="10dp"
 	        android:layout_below="@id/commontLayout" 
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:orientation="horizontal"
 	        android:gravity="center|left"
 	        >
-	        <com.neighbor.widget.CircularImage
-		        android:id="@+id/replyAvatarImg"
-		        android:layout_width="@dimen/interactReplyUserAvatar"
-		        android:layout_height="@dimen/interactReplyUserAvatar"
-		        android:src="@drawable/img4"
-		        android:scaleType="centerCrop"
-		        />
-	        <TextView 
-	            android:id="@+id/replyContentText"
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:layout_marginLeft="15dp"
-	            android:text="我想吃饭。。。。。。"
-	            />
+	       <com.neighbor.widget.ReplyListView
+                   android:id="@+id/comment_list"
+                   android:paddingTop="9dp"
+                   android:paddingBottom="6dp"
+                   android:layout_width="fill_parent"
+                   android:layout_height="fill_parent"
+                   android:divider="@null"
+                   android:orientation="vertical" />
 	    </LinearLayout>
 	</RelativeLayout>
 </LinearLayout>

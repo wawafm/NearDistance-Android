@@ -2,12 +2,102 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/dengluditu" >
     
+    <ImageView 
+        android:id="@+id/loginImg"
+        android:layout_width="73dp"
+        android:layout_height="50dp"
+        android:scaleType="fitXY"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/denglulogo"
+        />
+    <LinearLayout 
+        android:layout_marginTop="35dp"
+        android:layout_width="@dimen/loginEditWidth"
+        android:layout_height="@dimen/loginEditheight"
+        android:orientation="horizontal"
+        >
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机号码"
+            android:textColor="@color/white"
+            android:textSize="@dimen/TextSize12"
+            />
+        <EditText 
+	        android:id="@+id/userName"
+	        android:background="@null"
+	        android:layout_width="@dimen/loginEditWidth"
+	        android:layout_height="@dimen/loginEditheight"
+	        android:singleLine="true"
+	        android:textColor="@color/white"
+	        />
+    </LinearLayout>
+    <View
+        android:layout_width="@dimen/loginEditWidth"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        />
+    <LinearLayout 
+        android:layout_marginTop="35dp"
+        android:layout_width="@dimen/loginEditWidth"
+        android:layout_height="@dimen/loginEditheight"
+        android:orientation="horizontal"
+        >
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机号码"
+            android:textColor="@color/white"
+            android:textSize="@dimen/TextSize12"
+            />
+       	<EditText 
+	        android:id="@+id/userPassWord"
+	        android:background="@null"
+	        android:layout_width="@dimen/loginEditWidth"
+	        android:layout_height="@dimen/loginEditheight"
+	        android:password="true"
+	        android:singleLine="true"
+	        android:textColor="@color/white"
+        />
+    </LinearLayout>
+    <View
+        android:layout_width="@dimen/loginEditWidth"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        />
+    
+    <Button
+        android:layout_marginTop="35dp" 
+        android:id="@+id/userLoginBtn"
+        android:background="@drawable/regist_btn"
+        android:layout_width="@dimen/loginEditWidth"
+        android:layout_height="@dimen/loginEditheight"
+        android:textSize="@dimen/TextSize16"
+        android:textColor="@color/white"
+        android:text="登录"
+        />
+    <Button 
+        android:id="@+id/userRegistBtn"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/login_btn"
+        android:layout_width="@dimen/loginEditWidth"
+        android:layout_height="@dimen/loginEditheight"
+        android:textSize="@dimen/TextSize16"
+        android:textColor="@color/radioGroupTextColor"
+        android:text="注册"
+        />
     <TextView 
+        android:id="@+id/forgetPassWord"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="这是我的页面"
+        android:textSize="@dimen/TextSize12"
+        android:textColor="@color/white"
+        android:text="忘记密码"
         />
 
 </LinearLayout>

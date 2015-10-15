@@ -2,13 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical" >
-
+    
     <com.neighbor.widget.RefreshListView
         android:id="@+id/YouHuiList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="55dp"
         android:layout_marginLeft="15dp"
+        android:listSelector="@color/white"
+        android:focusable="false"
+        android:smoothScrollbar="false" 
+        android:fadingEdge="none"
         />
+   
 </LinearLayout>

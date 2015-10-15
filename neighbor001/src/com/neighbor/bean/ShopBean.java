@@ -1,5 +1,7 @@
 package com.neighbor.bean;
 
+import java.io.Serializable;
+
 /*<shop_name>优客韩国小吃</shop_name>
 <shop_poiid>42919967</shop_poiid>
 <shop_tel>13288172517</shop_tel>
@@ -9,7 +11,7 @@ package com.neighbor.bean;
 <shop_lat>23.072299</shop_lat>
 <shop_city>惠州</shop_city>
 */
-public class ShopBean {
+public class ShopBean implements Serializable {
 
 	private String shop_name ;
 	private String shop_poiid ;

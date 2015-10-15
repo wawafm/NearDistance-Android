@@ -1,15 +1,16 @@
 package com.neighbor.adapter;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.example.neighbor001.R;
 import com.neighbor.bean.DealBean;
 import com.neighbor.bean.ShopBean;
 import com.neighbor.utils.LogUtis;
 import com.neighbor.utils.Util;
+import com.neighor.neighbor001.R;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import android.content.Context;
@@ -27,9 +28,9 @@ public class HomeTuanGouListAdapter extends BaseAdapter{
 
 	private Context mContext;
 //	private List<Map<String,Object>> tuanGouStr = null;
-	List<DealBean> dealBeansList = null;
-	List<ShopBean> shopBeanList = null;
-	public HomeTuanGouListAdapter(Context mContext,List<ShopBean> shopBeansList,List<DealBean> dealBeansList){
+	private ArrayList<DealBean> dealBeansList = null;
+	private ArrayList<ShopBean> shopBeanList = null;
+	public HomeTuanGouListAdapter(Context mContext,ArrayList<ShopBean> shopBeansList,ArrayList<DealBean> dealBeansList){
 		this.mContext = mContext;
 		this.shopBeanList = shopBeansList;
 		this.dealBeansList = dealBeansList;

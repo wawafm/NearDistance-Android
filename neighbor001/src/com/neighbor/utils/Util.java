@@ -18,8 +18,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
-import com.example.neighbor001.NeighborApplecation;
-import com.example.neighbor001.R;
+import com.neighor.neighbor001.NeighborApplecation;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.xiaomi.mipush.sdk.MiPushClient;
 

@@ -3,10 +3,11 @@ package com.neighbor.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.neighbor001.R;
 import com.neighbor.adapter.InteractListAdapter;
 import com.neighbor.widget.CircularImage;
 import com.neighbor.widget.RefreshListView;
+import com.neighbor.widget.ReplyListView;
+import com.neighor.neighbor001.R;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,7 +20,6 @@ public class InteractFragment extends Fragment{
 
 	
 	private RefreshListView listView;
-	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

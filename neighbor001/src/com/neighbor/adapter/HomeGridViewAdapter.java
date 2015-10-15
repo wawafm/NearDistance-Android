@@ -7,7 +7,7 @@
  */
 package com.neighbor.adapter;
 
-import com.example.neighbor001.R;
+import com.neighor.neighbor001.R;
 import com.xiaomi.push.service.l;
 
 import android.content.Context;

@@ -13,8 +13,10 @@ import java.util.Map;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-import com.example.neighbor001.AppConfig;
-import com.example.neighbor001.R;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.HttpHandler;
@@ -22,11 +24,14 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 import com.neighbor.activity.JinRiYouHuiActivity;
+import com.neighbor.activity.JinRiYouHuiListActivity;
 import com.neighbor.adapter.HomeGridViewAdapter;
 import com.neighbor.adapter.HomeTuanGouListAdapter;
 import com.neighbor.bean.DealBean;
 import com.neighbor.bean.ShopBean;
 import com.neighbor.utils.LogUtis;
+import com.neighor.neighbor001.AppConfig;
+import com.neighor.neighbor001.R;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -45,6 +50,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.ScrollView;
 
 
 public class HomeFragment extends Fragment{
@@ -53,12 +59,13 @@ public class HomeFragment extends Fragment{
 	private RadioGroup homeRgs;
 	private GridView homeGrid;
 	private ListView homeList;
+	private PullToRefreshScrollView pullToRefreshScrollView;
 	private HomeViewPagerAdapter homeAdapter = null;
 	private List<ImageView> imageViews= null;
 	//存放XML解析的数据
 //	private List<Map<String, Object>> beanList = null;
-	private List<DealBean> dealBeansList = null;
-	private List<ShopBean> shopBeansList = null;
+	private ArrayList<DealBean> dealBeansList = null;
+	private ArrayList<ShopBean> shopBeansList = null;
 	private DealBean dealBeanObj = null;
 	private ShopBean shopBeanObj = null;
 	
@@ -82,7 +89,9 @@ public class HomeFragment extends Fragment{
 		homeList = (ListView) view.findViewById(R.id.homeTuanGouList);
 		homeRgs = (RadioGroup) view.findViewById(R.id.homePageRadio);
 		homePager = (ViewPager) view.findViewById(R.id.homeAutoViewPager);
-		
+		pullToRefreshScrollView = (PullToRefreshScrollView) view.findViewById(R.id.homeRefreshScrollLayout);
+		pullToRefreshScrollView.setMode(Mode.BOTH);
+//		pullToRefreshScrollView.setOnRefreshListener(new OnScrollRefreshListener());
 		initHomeRgs();
 		initViewPager();
 		initGridView();
@@ -90,7 +99,21 @@ public class HomeFragment extends Fragment{
 	}
 
 	
+	public class OnScrollRefreshListener implements OnRefreshListener2<ScrollView>{
 
+		@Override
+		public void onPullDownToRefresh(PullToRefreshBase<ScrollView> refreshView) {
+			// TODO Auto-generated method stub
+		}
+
+		@Override
+		public void onPullUpToRefresh(PullToRefreshBase<ScrollView> refreshView) {
+			// TODO Auto-generated method stub
+		}
+		
+	}
+	
+	
 	private void initHomeList() {
 		getMeiTuanData();
 		
@@ -153,6 +176,8 @@ public class HomeFragment extends Fragment{
 						shopBeanObj.setShop_name(parser.nextText());
 					}else if (tagName.equals("deal_img")) {
 						dealBeanObj.setDeal_img(parser.nextText());
+					}else if (tagName.equals("deal_wap_url")) {
+						dealBeanObj.setDeal_wap_url(parser.nextText());
 					}
 					break;
 				case XmlPullParser.END_TAG:
@@ -182,6 +207,18 @@ public class HomeFragment extends Fragment{
 		
 		HomeTuanGouListAdapter tuanGouListAdapter = new HomeTuanGouListAdapter(getActivity(),shopBeansList,dealBeansList);
 		homeList.setAdapter(tuanGouListAdapter);
+		homeList.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				if (dealBeansList!=null&&dealBeansList.size()>0) {
+					JinRiYouHuiListActivity.Lanuch(getActivity(),dealBeansList.get(position).getDeal_wap_url());
+				}
+				
+			}
+		});
 	}
 
 	private void initGridView() {
@@ -209,7 +246,7 @@ public class HomeFragment extends Fragment{
 			case 3:
 				break;
 			case 4:
-				JinRiYouHuiActivity.Lanuch(getActivity());
+				JinRiYouHuiActivity.Lanuch(getActivity(),dealBeansList,shopBeansList);
 				break;
 			case 5:
 				break;

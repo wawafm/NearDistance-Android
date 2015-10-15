@@ -2,8 +2,8 @@ package com.neighbor.adapter;
 
 import java.util.List;
 
-import com.example.neighbor001.R;
 import com.neighbor.widget.CircularImage;
+import com.neighor.neighbor001.R;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -73,8 +73,6 @@ public class InteractListAdapter extends BaseAdapter{
 			publishImg = (ImageView) view.findViewById(R.id.publishImg);
 			commontTime = (TextView) view.findViewById(R.id.commontTime);
 			replyMsg = (TextView) view.findViewById(R.id.replyMsg);
-			replyContentText = (TextView) view.findViewById(R.id.replyContentText);
-			replyAvatarImg = (CircularImage) view.findViewById(R.id.replyAvatarImg);
 		}
 	}
 }

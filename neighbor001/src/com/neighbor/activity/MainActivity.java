@@ -3,17 +3,18 @@ package com.neighbor.activity;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.neighbor001.R;
 import com.neighbor.fragment.BusinessCircleFragment;
 import com.neighbor.fragment.HomeFragment;
 import com.neighbor.fragment.InteractFragment;
 import com.neighbor.fragment.MyFragment;
 import com.neighbor.utils.LogUtis;
 import com.neighbor.widget.ListViewForScrollView;
+import com.neighor.neighbor001.R;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -22,10 +23,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.TextView;
 
 public class MainActivity extends BaseActivity {
 
@@ -34,14 +38,29 @@ public class MainActivity extends BaseActivity {
 	private MainFragmentPageAdapter fragmentPageAdapter = null;
 	private List<Fragment> fragments = null;
 	private String titleName [] = {"邻居","邻居圈","商业","个人中心"};
+	private ImageView logoImage;
+	private TextView logoTitleText,logoTitleRight;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+//		setTitleImage(R.drawable.shouyelogo);
 		initView();
+		initActionBar();
 		initRadioGroup();
 		initViewPager();
+	}
+
+	private void initActionBar() {
+		// TODO Auto-generated method stub
+		ActionBar actionBar = getActionBar();
+		if (actionBar!=null) {
+			logoImage = (ImageView) findViewById(R.id.logoImg);
+//			logoImage.setImageResource(R.drawable.shouyelogo);
+			logoTitleText = (TextView) findViewById(R.id.logoTitle);
+			logoTitleRight = (TextView) findViewById(R.id.logoRight);
+			actionBar.hide();
+		}
 	}
 
 	private void initView() {
@@ -82,7 +101,7 @@ public class MainActivity extends BaseActivity {
 			for (int i = 0; i <count; i++) {
 				if (arg1==arg0.getChildAt(i).getId()) {
 					mPager.setCurrentItem(i);
-					setTitle(titleName[i]);
+					logoTitleText.setText(titleName[i]);
 				}
 			}
 		}
@@ -109,9 +128,9 @@ public class MainActivity extends BaseActivity {
 			// TODO Auto-generated method stub
 			rgs.check(arg0+1);
 			if (arg0==1) {
-				setTextRight("发布新话题",1);
+				logoTitleRight.setVisibility(View.VISIBLE);
 			}else {
-				setTextRight("发布新话题",0);
+				logoTitleRight.setVisibility(View.GONE);
 			}
 		}
 		

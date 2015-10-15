@@ -7,6 +7,8 @@
  */
 package com.neighbor.bean;
 
+import java.io.Serializable;
+
 /*<website>美团网</website>
 <deal_more_img>...</deal_more_img>
 <reservation>0</reservation>
@@ -57,7 +59,7 @@ package com.neighbor.bean;
 <deal_roomtime/>
 <coupon>0</coupon>*/
 
-public class DealBean{
+public class DealBean implements Serializable{
 	private String website;
 	private String deal_more_img;
 	private String reservation;

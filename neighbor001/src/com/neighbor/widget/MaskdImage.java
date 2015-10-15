@@ -1,5 +1,6 @@
 package com.neighbor.widget;
-import com.example.neighbor001.R;
+
+import com.neighor.neighbor001.R;
 
 import android.app.Activity;
 import android.content.Context;
