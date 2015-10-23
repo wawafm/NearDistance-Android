@@ -18,7 +18,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.neighbor.activity.MainActivity"
+            android:name="com.neighbor.activity.UserStartLoginActivity"
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,13 +29,45 @@
         </activity>
         
         <activity 
-            android:name="com.neighbor.activity.JinRiYouHuiActivity"
-            >
+            android:name="com.neighbor.activity.MainActivity">
         </activity>
         <activity 
-            android:name="com.neighbor.activity.JinRiYouHuiListActivity"
-            >
+            android:name="com.neighbor.activity.JinRiYouHuiActivity">
         </activity>
+        
+        <activity 
+            android:name="com.neighbor.activity.JinRiYouHuiListActivity">
+        </activity>
+        <activity 
+            android:name="com.neighbor.activity.UserQueryChargeMsgActivity">
+        </activity>
+        
+        <activity 
+            android:name="com.neighbor.activity.ChangeNiChengActivity">
+        </activity>
+        <activity 
+            android:name="com.neighbor.activity.HouseHireActivity">
+        </activity>
+        <activity 
+            android:name="com.neighbor.activity.SuperMenberActivity">
+        </activity>
+        <activity 
+            android:name="com.neighbor.activity.UserAddressActivity">
+        </activity>
+        <activity 
+            android:name="com.neighbor.activity.AboutNeighborActivity">
+        </activity>
+        <activity 
+            android:name="com.neighbor.activity.SelectReceiveAddressActivity">
+        </activity>
+        <activity 
+            android:name="com.neighbor.activity.UserIsLoginActivity">
+        </activity>
+        
+        <activity 
+            android:name="com.neighbor.activity.UserRegisterActivity">
+        </activity>
+        
     </application>
 	
 </manifest>

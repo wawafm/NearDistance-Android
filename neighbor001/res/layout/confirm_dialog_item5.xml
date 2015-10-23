@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/circle_corner_dialog"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="1dp"
+    >
+
+    <LinearLayout
+        style="@style/ConfirmDialog"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/confirm_dialog_title_tv"
+            style="@style/ConfirmDialogTitle"
+            android:text="提示" />
+
+       <!-- <ImageView
+            android:id="@+id/line"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/DividerHeight"
+            android:background="@color/c1" 
+            android:visibility="gone"/>  -->
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="50dip" >
+
+            <TextView
+                android:id="@+id/confirm_dialog_content"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="@dimen/LargePadding"
+                android:layout_marginRight="@dimen/LargePadding"
+				android:textColor="@color/w3_03"
+				android:textSize="@dimen/TextSize14"
+                android:gravity="center|top"
+                android:singleLine="false"
+                android:maxLines="6"
+                />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/DividerHeight"
+            android:background="@color/lineBg" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/confirm"
+                android:gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/NormalButtonHeight"
+                android:layout_weight="1"
+                android:background="@drawable/selector_button_rect"
+                android:text="确定"
+                android:textColor="@color/w3_03"
+                android:textSize="@dimen/TextSize14" />
+			<View android:layout_width="1px"
+			    android:layout_height="match_parent"
+			    android:background="@color/lineBg"/>
+            <Button
+                android:id="@+id/cancel"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/NormalButtonHeight"
+                android:layout_weight="1"
+                android:background="@drawable/selector_button_rect"
+                android:text="取消"
+                android:gravity="center"
+                android:textColor="@color/w3_02"
+                android:textSize="@dimen/TextSize14" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

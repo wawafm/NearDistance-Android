@@ -6,9 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -23,13 +21,15 @@ import com.lidroid.xutils.http.HttpHandler;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
+import com.neighbor.activity.HouseHireActivity;
 import com.neighbor.activity.JinRiYouHuiActivity;
 import com.neighbor.activity.JinRiYouHuiListActivity;
 import com.neighbor.adapter.HomeGridViewAdapter;
 import com.neighbor.adapter.HomeTuanGouListAdapter;
 import com.neighbor.bean.DealBean;
 import com.neighbor.bean.ShopBean;
-import com.neighbor.utils.LogUtis;
+import com.neighbor.widget.AutoScrollViewPager;
+import com.neighbor.widget.PopWindowHelper;
 import com.neighor.neighbor001.AppConfig;
 import com.neighor.neighbor001.R;
 
@@ -42,6 +42,7 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
@@ -56,11 +57,10 @@ import android.widget.ScrollView;
 public class HomeFragment extends Fragment{
 	
 	private ViewPager homePager;
-	private RadioGroup homeRgs;
+	private ViewGroup homeRgs;
 	private GridView homeGrid;
 	private ListView homeList;
 	private PullToRefreshScrollView pullToRefreshScrollView;
-	private HomeViewPagerAdapter homeAdapter = null;
 	private List<ImageView> imageViews= null;
 	//存放XML解析的数据
 //	private List<Map<String, Object>> beanList = null;
@@ -68,7 +68,7 @@ public class HomeFragment extends Fragment{
 	private ArrayList<ShopBean> shopBeansList = null;
 	private DealBean dealBeanObj = null;
 	private ShopBean shopBeanObj = null;
-	
+	private List<String> list = null;
 	private HttpHandler httpHandler = null;
 	private HttpUtils httpUtils=null;
 	@Override
@@ -83,22 +83,33 @@ public class HomeFragment extends Fragment{
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onViewCreated(view, savedInstanceState);
-		
 		httpUtils = new HttpUtils();
 		homeGrid = (GridView) view.findViewById(R.id.homeContentType);
 		homeList = (ListView) view.findViewById(R.id.homeTuanGouList);
-		homeRgs = (RadioGroup) view.findViewById(R.id.homePageRadio);
+		homeRgs = (ViewGroup) view.findViewById(R.id.homePageRadio);
 		homePager = (ViewPager) view.findViewById(R.id.homeAutoViewPager);
 		pullToRefreshScrollView = (PullToRefreshScrollView) view.findViewById(R.id.homeRefreshScrollLayout);
 		pullToRefreshScrollView.setMode(Mode.BOTH);
 //		pullToRefreshScrollView.setOnRefreshListener(new OnScrollRefreshListener());
-		initHomeRgs();
-		initViewPager();
 		initGridView();
 		initHomeList();
+		initData();
+		AutoScrollViewPager autoViewPager = new AutoScrollViewPager(getActivity(), homePager, homeRgs);
+		autoViewPager.startScroll();
 	}
 
 	
+	private void initData() {
+		// TODO Auto-generated method stub
+		list = new ArrayList<String>();
+		list.add("2015");
+		list.add("2016");
+		list.add("2017");
+		list.add("2018");
+		list.add("2019");
+	}
+
+
 	public class OnScrollRefreshListener implements OnRefreshListener2<ScrollView>{
 
 		@Override
@@ -147,26 +158,31 @@ public class HomeFragment extends Fragment{
 	}
 	
 	private void initXMLData(InputStream result) {
-		InputStreamReader isr = new InputStreamReader(result);
+		InputStreamReader isr = null;
 		XmlPullParserFactory parserFactory = null;
 		XmlPullParser parser = null;
 		try {
+			isr = new InputStreamReader(result);
 			parserFactory = XmlPullParserFactory.newInstance();
 			parser = parserFactory.newPullParser();
 			parser.setInput(isr);
 			int event = parser.getEventType();
-			while (event!=XmlPullParser.END_DOCUMENT) {
+			while (event!=XmlPullParser.END_DOCUMENT) {      
 				switch (event) {
-				case XmlPullParser.START_DOCUMENT:
+				case XmlPullParser.START_DOCUMENT:    
+					//如果是开始标签，那么就开始创建集合。
 //					beanList = new ArrayList<Map<String, Object>>();
 					dealBeansList = new ArrayList<DealBean>();
 					shopBeansList = new ArrayList<ShopBean>();
 					break;
 				case XmlPullParser.START_TAG:
+					//获得节点的名字，判断节点是否等于某一节点。
 					String tagName = parser.getName();
 					if (tagName.equals("deal")) {
+						//如果节点等于deal，那么开始创建DealBean对象。
 						dealBeanObj = new DealBean();
 					}else if (tagName.equals("shop")) {
+						//如果节点等于shop，那么开始创建ShopBean对象。
 						shopBeanObj = new ShopBean();
 					}else if (tagName.equals("deal_title")) {
 						dealBeanObj.setDeal_title(parser.nextText());
@@ -181,6 +197,7 @@ public class HomeFragment extends Fragment{
 					}
 					break;
 				case XmlPullParser.END_TAG:
+					//当解析到最后的根节点的时候，把对象存放在数组里，并让该对象为空对像，
 					if ("deal".equals(parser.getName())) {
 						
 						dealBeansList.add(dealBeanObj);
@@ -233,17 +250,21 @@ public class HomeFragment extends Fragment{
 
 	public class HomeGridItemClick implements OnItemClickListener{
 
+		int i = 1;
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
 			switch (position) {
 			case 0:
+				PopWindowHelper.init(getActivity());
+				PopWindowHelper.getInstance().showPopListView(view, list,800,1718);
 				break;
 			case 1:
 				break;
 			case 2:
 				break;
 			case 3:
+				HouseHireActivity.lanuch(getActivity(), AppConfig.HOUSE_HIRE);
 				break;
 			case 4:
 				JinRiYouHuiActivity.Lanuch(getActivity(),dealBeansList,shopBeansList);
@@ -257,118 +278,16 @@ public class HomeFragment extends Fragment{
 		}
 
 	}
-	private void initHomeRgs() {
-		// TODO Auto-generated method stub
-		homeRgs.setOnCheckedChangeListener(new HomeRgsCheckedListener());
-		((RadioButton)homeRgs.getChildAt(0)).setChecked(true);
-	}
-
-	private void initViewPager() {
-		// TODO Auto-generated method stub
-		
-		int[] imgs = {R.drawable.img1,R.drawable.img2,R.drawable.img3,R.drawable.img4,};
-		imageViews = new ArrayList<ImageView>();
-		for (int i = 0; i < imgs.length; i++) {
-			ImageView imageView = new ImageView(getActivity());
-			imageView.setImageResource(imgs[i]);
-			imageViews.add(imageView);
-		}
-		homePager.setOnPageChangeListener(new ViewPageChangeListener());
-		homePager.setCurrentItem(0);
-		homePager.setOffscreenPageLimit(4);
-		homeAdapter = new HomeViewPagerAdapter(imageViews);
-		homePager.setAdapter(homeAdapter);
-	}
-
-	public class HomeViewPagerAdapter extends PagerAdapter{
-
-		List<ImageView> imageViews = null;
-		public HomeViewPagerAdapter(List<ImageView> imageViews){
-			this.imageViews = imageViews;
-		}
-		@Override
-		public int getCount() {
-			// TODO Auto-generated method stub
-			return imageViews.size();
-		}
-
-		@Override
-		public boolean isViewFromObject(View arg0, Object arg1) {
-			// TODO Auto-generated method stub
-			return arg0==arg1;
-		}
-		@Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            View v = imageViews.get(position);
-            container.addView(v);
-            return v;
-        }
-         
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-//          super.destroyItem(container, position, object);
-//            container.removeView(imageViews.get(position));
-        }
-		
-	}
-	public class HomeRgsCheckedListener implements OnCheckedChangeListener{
-
-		@Override
-		public void onCheckedChanged(RadioGroup arg0, int arg1) {
-			// TODO Auto-generated method stub
-			int count = arg0.getChildCount();
-			for (int i = 0; i < count; i++) {
-				if (arg1==arg0.getChildAt(i).getId()) {
-					homePager.setCurrentItem(i);
-				}
-			}
-		}
-		
-	}
-	public class ViewPageChangeListener implements OnPageChangeListener{
-
-		@Override
-		public void onPageScrollStateChanged(int arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-		@Override
-		public void onPageScrolled(int arg0, float arg1, int arg2) {
-			// TODO Auto-generated method stub
-			
-		}
-		@Override
-		public void onPageSelected(int arg0) {
-			// TODO Auto-generated method stub
-			((RadioButton)homeRgs.getChildAt(arg0)).setChecked(true);
-		}
-	}
 	
 	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		mHandler.sendEmptyMessageDelayed(1, 2000);
 	}
 	@Override
 	public void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
-		mHandler.removeMessages(1);
 	}
-	private Handler mHandler = new Handler() {
-        public void handleMessage(android.os.Message msg) {
-            switch(msg.what) {
-            case 1:
-                int totalcount = imageViews.size();//存放ImageView的list的大小
-                int currentItem = homePager.getCurrentItem();
-                int toItem = currentItem + 1 == totalcount ? 0 : currentItem + 1;
-                
-                homePager.setCurrentItem(toItem, true);
-            	
-                //每两秒钟发送一个message，用于切换viewPager中的图片
-                this.sendEmptyMessageDelayed(1, 2000);
-            }
-        }
-    };
+	
 }

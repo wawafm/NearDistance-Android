@@ -4,6 +4,8 @@
    	<dimen name="TextSize10">10dp</dimen>
 	<dimen name="TextSize12">12dp</dimen>
 	<dimen name="TextSize14">14dp</dimen>
+	<dimen name="TextSize15">15dp</dimen>
+	
 	<dimen name="TextSize16">16dp</dimen>
 	<!-- textSize  字体大小 -->
 	
@@ -13,8 +15,17 @@
 	<dimen name="interactListPadding">17dp</dimen>
 	<dimen name="interactCommontUserAvatar">36dp</dimen>
 	<dimen name="interactReplyUserAvatar">32dp</dimen>
+	
+	<dimen name="userAvatarSize">60dp</dimen>
+	<dimen name="userItemMaginLeft">27dp</dimen>
+	<dimen name="reqisterEditWidth">87dp</dimen>
 	<dimen name="loginEditWidth">217dp</dimen>
 	<dimen name="loginEditheight">40dp</dimen>
 	
+	
+	<dimen name="LargePadding">16.0dip</dimen>
+	<dimen name="DividerHeight">1.0dip</dimen>
+	<dimen name="NormalButtonHeight">44dip</dimen>
+	<dimen name="DialogHeaderHeight">90dp</dimen>
 	<!-- 边距和宽高 -->
 </resources>

@@ -42,8 +42,8 @@ public class JinRiYouHuiActivity extends BaseActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.jinri_youhui_layout);
-		setTitleImage(R.drawable.shouyelogo);
-		
+		setTitle("今日优惠");
+		setTextRight("",0);
 		initListView();
 	}
 

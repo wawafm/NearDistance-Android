@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/radioGroupTextColorDefalut"
+        android:textSize="@dimen/TextSize14"
+        android:text="姓名  ：张**"
+        />
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/radioGroupTextColorDefalut"
+        android:textSize="@dimen/TextSize14"
+        android:text="联系方式  ：182*****1846"
+        />
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/radioGroupTextColorDefalut"
+        android:textSize="@dimen/TextSize14"
+        android:text="年月  ：2015-10"
+        />
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/radioGroupTextColorDefalut"
+        android:textSize="@dimen/TextSize14"
+        android:text="房号：鸿威金都雅苑-1栋-1004"
+        />
+</LinearLayout>

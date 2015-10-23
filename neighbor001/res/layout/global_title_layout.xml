@@ -2,38 +2,45 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/titleAndBottomHeight"
-    android:orientation="horizontal"
-    android:gravity="center"
+    android:background="@color/white"
     >
-    
-    <ImageView
-        android:layout_alignParentLeft="true"
-        android:id="@+id/titleImage"
-        android:layout_marginLeft="18dp"
+    <TextView
+        android:id="@+id/titleImageText" 
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onBack"
+        android:layout_height="match_parent"
+        android:text="返回"
+        android:paddingLeft="10dp"
+        android:layout_alignParentLeft="true"
+        android:textSize="@dimen/TextSize12"
+        android:gravity="center|left"
+        android:drawableLeft="@drawable/title_home_back_selector"
         />
     <TextView
-        android:gravity="center" 
-        android:layout_toRightOf="@id/titleImage"
-        android:layout_gravity="left"
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:textColor="@color/radioGroupTextColor"
-        android:textSize="@dimen/TextSize12"
+        android:layout_height="match_parent"
+        android:gravity="center|left"
+        android:layout_centerInParent="true"
+        android:textSize="@dimen/TextSize14"
+        android:text="中间标题"
         />
 	<TextView 
+	    android:paddingRight="10dp"
 	    android:id="@+id/textRight"
-	    android:layout_alignParentRight="true"
+	    android:gravity="center|left"
 	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:drawableLeft="@drawable/xinhuati"
-	    android:textColor="@color/radioGroupTextColor"
+	    android:layout_height="match_parent"
         android:textSize="@dimen/TextSize12"
         android:text="发布新话题"
-        android:visibility="gone"
+        android:clickable="true"
+        android:onClick="onRightClick"
+        android:layout_alignParentRight="true"
+        
 	    />
+	<View 
+	    android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lineBg"
+        />
 </RelativeLayout>

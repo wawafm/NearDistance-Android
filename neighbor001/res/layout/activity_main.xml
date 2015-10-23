@@ -5,6 +5,7 @@
     android:scrollbars="none"
     android:gravity="center_vertical"
     tools:context=".MainActivity" >
+    
 	<RelativeLayout 
 	    android:id="@+id/titleLayout"
 	    android:layout_width="match_parent"
@@ -19,12 +20,14 @@
 	        android:layout_height="wrap_content"
 	        android:src="@drawable/shouyelogo"
 	        android:layout_marginLeft="10dp"
+	        android:layout_centerVertical="true"
 	        />
 	    <TextView
 	        android:layout_toRightOf="@id/LinJuLogo"
 	        android:id="@+id/logoTitle"
 	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_height="match_parent"
+	        android:gravity="center"
 	        android:textSize="@dimen/TextSize12"
 	        android:textColor="@color/radioGroupTextColor"
 	        android:layout_marginLeft="5dp"
@@ -32,11 +35,12 @@
 	    <TextView 
 	        android:id="@+id/logoRight"
 	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
+	        android:layout_height="match_parent"
 	        android:text="发布新话题"
 	        android:layout_marginRight="10dp"
 	        android:layout_alignParentRight="true"
 	        android:layout_gravity="right"
+	        android:gravity="center"
 	        android:textSize="@dimen/TextSize10"
 	        android:textColor="@color/radioGroupTextColor"
 	        android:drawablePadding="3dp"
@@ -44,13 +48,18 @@
 	        android:visibility="gone"
 	        />
 	</RelativeLayout>
-    <android.support.v4.view.ViewPager
-        android:layout_below="@id/titleLayout"
-        android:id="@+id/viewpager"
+	<include
+	    android:id="@+id/mLine"
+	    android:layout_below="@id/titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/line_layout"/>
+    <FrameLayout
+        android:layout_below="@id/mLine"
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:flipInterval="30"
-        android:persistentDrawingCache="animation" />
+        />
     <include
         android:layout_above="@+id/mainBottomRgs" 
         android:layout_width="match_parent"

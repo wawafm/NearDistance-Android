@@ -8,4 +8,13 @@
     <color name="color_gray">#ffefefef</color>
     <color name="color_white">#ffffffff</color>
     <color name="white">#ffffff</color>
+    <color name="userTypeBg">#ff9900</color>
+    <color name="lineBg">#e5e5e5</color>
+    <color name="banTouMingBg">#e5ffffff</color>
+    <color name="quanTouMingBg">#00ffffff</color>
+    <color name="toumingse">#0000</color>
+    
+    <color name="w3_04">#231815</color>
+    <color name="w3_03">#898989</color>
+    <color name="w3_02">#b0b0b0</color>
 </resources>

@@ -19,6 +19,7 @@ import java.util.Random;
 import java.util.UUID;
 
 import com.neighor.neighbor001.NeighborApplecation;
+import com.neighor.neighbor001.R;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.xiaomi.mipush.sdk.MiPushClient;
 
@@ -87,6 +88,38 @@ public class Util {
 		return stringBuilder.toString();
 	}
 
+	public static Map<String, String[]> getCitys(Context context) {
+		// TODO Auto-generated method stub
+		String cityStr = context.getResources().getString(R.string.cities);
+		String[] cityArr = cityStr.split(",");
+		Map<String, String[]> citys = new HashMap<String, String[]>();
+		for (int i = 0; i < cityArr.length; i++) {
+			String[] item = cityArr[i].split(":");
+
+			citys.put(item[0].trim(), item[1].split("-"));
+		}
+
+		return citys;
+	}
+	
+	//
+	public static String getMetaData(Context ctx, String key) {
+		ApplicationInfo info = null;
+		try {
+			info = ctx.getPackageManager().getApplicationInfo(
+					ctx.getPackageName(), PackageManager.GET_META_DATA);
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (info != null) {
+			String value = info.metaData.getString(key);
+			return value;
+		}
+		return "";
+
+	}
+	
 	/**
 	 * Convert hex string to byte[]
 	 * 

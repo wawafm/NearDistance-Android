@@ -25,8 +25,9 @@ public class JinRiYouHuiListActivity extends BaseActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.business_circle_fragment_layout);
+		setTitle("");
+		setTextRight("",0);
 		initRefreshScrollView();
-		setTitleImage(R.drawable.shouyelogo);
 	}
 	private void initRefreshScrollView() {
 		// TODO Auto-generated method stub
